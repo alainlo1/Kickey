@@ -1,0 +1,379 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;   
+}
+
+body, input{
+    font-family: 'Monda', sans-serif;
+}
+
+.container{
+    position: relative;
+    width: 100%;
+    min-height:100vh ;
+    background-color: #122936;
+    overflow: hidden;
+}
+.container:before{
+    /* le cercle */
+    content: '';
+    position: absolute;
+    width: 2000px;
+    height: 2000px;
+    border-radius: 50%;
+    background: linear-gradient(-45deg, #3EF1EF,rgb(70, 29, 134));
+    top: -10% ;
+    right: 48%;
+    transform: translateY(-50%);
+    z-index: 6;
+    transition: 1.8s ease-in-out;
+}
+
+.signin-signup{
+    position: absolute;
+    top: 50%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    display: grid;
+    grid-template-columns: 1fr;
+    z-index: 5;
+    transition: 1s 0.7 ease-in-out;
+}
+
+.form-container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0%;
+    left: 0%;
+} 
+form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 5rem;
+    overflow: hidden;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2; 
+    transition: 0.2S 0.7s ease-in-out; 
+}
+form.sign-in-form{
+    z-index: 2;  
+}
+form.sign-up-form{
+    z-index: 1; 
+    opacity: 0; 
+}
+
+.title{
+    font-size: 2.2rem;
+    color: white;
+    margin-bottom: 10px;  
+}
+.input-cha{
+    max-width: 380px ;
+    width: 100%;
+    height: 55px;
+    background-color: aliceblue;
+    margin: 10PX 0;
+    border-radius: 55px;
+    display: grid;
+    grid-template-columns: 15% 85%;
+    padding: 0.4rem;
+}
+.input-cha i{
+    text-align: center;
+    line-height: 55px;
+    font-size: 1.1rem;
+    color: #acacac;
+}
+.input-cha input{
+    background: none;
+    outline: none;
+    border: none;
+    line-height: 1;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #333;
+}
+.input-cha input::placeholder{
+    color: #aaa;
+    font-weight: 500;
+}
+.btn{
+ width: 150px;
+ height: 50px;
+ border: none;
+ outline: none;
+ border-radius: 50px;
+ cursor: pointer;
+ background: rgb(92, 74, 175);
+ color: white;
+ text-transform: uppercase;
+ font-weight: 600;
+ margin: 10px 0;
+ transition: .5s;
+}
+.btn:hover{
+    background-color: cyan;
+    color:rgb(92, 74, 175) ;
+}
+.social-text{
+    padding: .7rem 0;
+    font-size: 1rem;
+    color: white;
+}
+.reseaux{
+    display: flex;
+    justify-content: center;
+}
+.social-icon{
+    height: 45PX;
+    width: 45px;
+    border:  1px solid white;
+    display: flex;
+    margin: 0 0.45rem;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-size: 1.1rem;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+.social-icon:hover{
+    color: cyan;
+    border-color: cyan;
+}
+.panel-container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0%;
+    left: 0%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.panel{
+    display: flex;
+    flex-direction:column ;
+    align-items: flex-end;
+    justify-content:space-around;
+    text-align:center ;
+    z-index: 7;
+}
+.panel .contenu{
+    color: white;
+    transition: transform 0.9s ease-in-out;
+
+}
+.panel h3{
+    font-weight: 600;
+    line-height: 1;
+    font-size: 1.5rem;
+    
+}
+.btn.transparent{
+    margin-top: 0;
+    background: none;
+    border: 2px solid white;
+    width: 130px;
+    height:41px;
+    font-weight: 600;
+    font-size: 0.8rem;
+
+}
+.panel p{
+    font-size: 0.95rem;
+    padding: 0.7rem 0;
+}
+.gauche-panel{
+
+    pointer-events: all;
+    padding:3rem 17% 2rem 12%;
+}
+.droite-panel{
+    pointer-events: none;
+    padding:3rem 12% 2rem 12%;
+}
+.image{
+    width: 100%;
+    transition: transform .9s .6s ease-in-out;
+
+}
+.droite-panel .contenu, .droite-panel .image{
+    transform: translateX(800px);
+}
+
+/* ANIMATIONS */
+.container.sign-up-mode:before{
+    transform: translate(100%, -50%);
+    right: 52%;
+}
+.container.sign-up-mode .gauche-panel .image,
+.container.sign-up-mode .gauche-panel .contenu{
+  transform: translateX(-800px);
+}
+.container.sign-up-mode .droite-panel .contenu,
+.container.sign-up-mode .droite-panel .image{
+    transform: translateX(0px);
+}
+.container.sign-up-mode .gauche-panel{
+    /* rend la partie gauche cliccable */
+    pointer-events: none;
+}
+.container.sign-up-mode .droite-panel{
+    pointer-events: all;
+}
+.container.sign-up-mode .signin-signup{
+    /* le form d'inscription va decaer de 25% vers la gauche */
+    left: 25%;
+}
+.container.sign-up-mode form.sign-in-form{
+    z-index: 1;
+    opacity: 0;
+}
+.container.sign-up-mode form.sign-up-form{
+    z-index: 2;
+    opacity: 1;
+
+}
+
+.alert-danger{
+    background: #B61111;
+    border-radius: 30px;
+    padding: 10PX;
+    color: white;
+    animation: fadein 2s;
+}
+.alert-success{
+    background: green;
+    border-radius: 30px;
+    padding: 10PX;
+    color: white;
+    animation: fadein 2s; 
+}
+
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+
+
+/* RESPONSIVE  TABLET*/
+@media (max-width: 870px){
+    .container{
+        min-height: 800px;
+        height: 100vh;
+    }
+    .container:before{
+        width: 1500px;
+        height: 1500px;
+        left: 30%;
+        bottom: 68%;
+        transform: translateX(-50%);
+        /* le initial les remet a leur valeurs de départ */
+        right: initial;
+        top: initial;
+        transition: 2s ease-in-out;
+    }
+    .signin-signup{
+        width: 100%;
+        left: 50%;
+        top: 95%;
+        transform: translate(-50%, -100%);
+        transition: 1S 0.8S ease-in-out;
+    }
+    .panel-container{
+        grid-template-columns: 1fr;
+        /* Ca vient de creer le 3emme colone */
+        grid-template-rows: 1FR 2FR 1FR;
+        background-color: #444;
+    }
+    .panel{
+        /* mtn le container a 2 row mail en fait un autre vide au milieux */
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        padding: 2.rem 8%;
+    }
+    .panel .contenu{
+        padding-right: 15% ;
+        transition: 0.9s 0.8s ease-in-out;
+    }
+    .panel h3{
+        font-size: 1.2rem;
+    }
+    .panel p{
+        font-size: 0.7rem;
+        padding: 0.5rem 0;
+    }
+    .btn.transparent{
+        width: 110px;
+        height: 35px;
+        font-size: 0.7rem;
+    }
+    .image{
+        width: 200px;
+        transition: 0.9s 0.6 ease-in-out;
+    }
+    .gauche-panel{
+        /* celui la il se prend la collone d'en haut */
+        grid-row: 1/2;
+    }
+    .droite-panel{
+                /* celui la il se prend la collone d'en bas */
+
+        grid-row: 3/4;
+    }
+    
+    .droite-panel .contenu, .droite-panel .image{
+        transform: translateY(300px);
+    }
+    .container.sign-up-mode:before{
+        transform: translate(-50%,100%);
+        bottom: 32%;
+        right: initial;
+
+    }
+    .container.sign-up-mode .gauche-panel .image, 
+    .container.sign-up-mode .gauche-panel .contenu{
+        transform: translateX(-300px);
+
+    }
+    .container.sign-up-mode .signin-signup{
+        top: 5%;
+        transform: translate(-50%, 0);
+        left: 50%;
+    }
+}
+
+/* RESPONSIVE MOBILE */
+@media (max-width: 570px){
+    form{
+        padding: 0 1.5rem; 
+    }
+    .image{
+        display: none;
+    }
+    .panel .contenu{
+        padding: 0.5rem 1rem;
+    }
+    .container:before{
+        bottom: 72%;
+        left: 50%;
+    }
+    .container.sign-up-mode::before{
+        bottom: 28%;
+        left: 50%;
+    }
+}
+
+

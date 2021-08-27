@@ -1,0 +1,53 @@
+
+.haut{
+    background-color: #CBD1D6;
+    text-align: center;
+}
+.haut .pp{
+    width: 100%;
+}
+.pp{
+    padding: 15px;
+}
+.pp_img{
+    width: 150px;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    margin: auto;
+}
+
+.haut .pp img{
+    width: 100%;
+    border-radius: 50%;
+}
+.infos{
+    display: flex;
+}
+.infos p{
+    margin: 15px;
+}
+.infos i{
+    font-size: 20px;
+    
+}
+@media (max-width: 858px){
+.pp{
+    width: 100%;
+
+}
+.haut{
+    padding-top: 20%;
+}
+
+}
+.post_pp i{
+    font-size: 30px;
+}
+
+
+
+
+
+
+
